@@ -1,0 +1,26 @@
+{
+  "name": "五子棋·工坊版",
+  "brief": "触屏点选落子的五子棋，带胜负判定、悔棋与重新开始，键盘方向键+回车同样可玩。",
+  "work_ref": "WORKS-3473",
+  "entry": "src/main.js",
+  "status": "wip",
+  "files": [
+    {
+      "path": "src/engine.js",
+      "role": "引擎：五子棋状态机、坐标换算、胜负流程与输入分发"
+    },
+    {
+      "path": "src/rules.js",
+      "role": "规则：落子合法性、五连判定、悔棋、重置等纯逻辑"
+    },
+    {
+      "path": "src/ui.js",
+      "role": "渲染与覆盖层：棋盘/棋子/光标绘制，DOM 计分板与按钮（absolute 挂 stage）"
+    },
+    {
+      "path": "src/main.js",
+      "role": "入口：创建画布、装配 engine/ui、唯一 Work.register 容器声明（mount+destroy），RAF 句柄在闭包内供 destroy 清理"
+    }
+  ],
+  "generated_by": "proj_forge（AI 工程工坊）"
+}
