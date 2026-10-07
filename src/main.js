@@ -61,20 +61,27 @@ Work.register({
     // 供 destroy 解绑：存到 this._xxx
     this._keyHandler = keyHandler;
     this._canvas = canvas;
+    this._game = game;
   },
 
   destroy: function () {
     if (rafId) { cancelAnimationFrame(rafId); rafId = 0; }
     if (this._canvas && downHandler) {
       this._canvas.removeEventListener('pointerdown', downHandler);
+      downHandler = null;
     }
     if (this._keyHandler) {
       window.removeEventListener('keydown', this._keyHandler);
       this._keyHandler = null;
     }
+    if (boundResize && this._game) {
+      boundResize = null;
+    }
     if (this._canvas && this._canvas.parentNode) {
       this._canvas.parentNode.removeChild(this._canvas);
     }
+    this._canvas = null;
+    this._game = null;
     UI.destroy();
   }
 });
